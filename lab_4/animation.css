@@ -1,0 +1,33 @@
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Центрирование */
+  
+}
+.roulette {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid black;
+  position: relative;
+  animation: infinite-spin 5s linear infinite;
+}
+.roulette__box_conteiner{
+  position: absolute;
+  left: 50%;
+  width: 50px;
+  height: 200px;
+}
+@keyframes infinite-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+  

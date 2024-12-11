@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+}
+
+.container {
+    width: 100%;
+    width: 1200px;
+    padding: 10px;
+    background-color: black;
+}
+
+.box {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid black;
+
+    /* min-height переопределяет высоту 1 ячейки */
+    min-height: 80px;
+    margin: 10px;
+}
+
+
+/*  1200 <= ширины экрана <= +inf  */
+.color_CD5C5C { background-color: #CD5C5C; width: 600px;}
+.color_DC143C { background-color: #DC143C; width: 600px;}
+.color_FFC0CB { background-color: #FFC0CB; width: 800px;}
+.color_FF69B4 { background-color: #FF69B4; width: 400px;}
+.color_ADFF2F { background-color: #ADFF2F; width: 260px; height: 100%;}
+.color_32CD32 { background-color: #32CD32; width: 220px;}
+.color_C71585 { background-color: #C71585; width: 400px;}
+.color_00FA9A { background-color: #00FA9A; width: 220px;}
+.color_2E8B57 { background-color: #2E8B57; width: 400px;}
+.color_006400 { background-color: #006400; width: 460px;}
+.color_9ACD32 { background-color: #9ACD32; width: 190px;}
+.color_808000 { background-color: #808000; width: 190px;}
+.color_00FF00 { background-color: #00FF00; width: 260px;}
+.color_66CDAA { background-color: #66CDAA; width: 220px;}
+.color_556B2F { background-color: #556B2F; width: 220px;}
+.color_008080 { background-color: #008080; width: 400px;}
+.color_FFA07A { background-color: #FFA07A; width: 380px;}
+.color_FF4500 { background-color: #FF4500; width: 380px;}
+.color_BC8F8F { background-color: #BC8F8F; width: 300px;}
+.color_F4A460 { background-color: #F4A460; width: 600px;}
+.color_D2691E { background-color: #D2691E; width: 300px;}
+.color_8B4513 { background-color: #8B4513; width: 600px;}
+.color_A52A2A { background-color: #A52A2A; width: 600px;}
+
+.first_block{
+    display: flex;
+    justify-content: space-around;
+}
+
+.second_block {
+    display: flex;
+    justify-content: space-around;
+}
+.second_block__side_block{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.third_block {
+    display: flex;
+    justify-content: space-around;
+}
+.third_block__first_side_box {
+    display: flex;
+    flex-direction: column;
+}
+.third_block__second_side_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fourth_block{
+    display: flex;
+    justify-content: space-around;
+}
+
+.first_row {
+    display: flex;
+    justify-content: space-around;
+}
+.second_row {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+@media (max-width: 1200px) {
+    /*  768 <= ширины экрана <= 1200  */
+    .color_CD5C5C { width: 600px;}
+    .color_DC143C { width: 600px;}
+    .color_FFC0CB { width: 800px;}
+    .color_FF69B4 { width: 400px;}
+    .color_ADFF2F { width: 167px; height: 100%;}
+    .color_32CD32 { width: 167px;}
+    .color_00FA9A { width: 167px;}
+    .color_2E8B57 { width: 167px;}
+    .color_006400 { width: 167px;}
+    .color_9ACD32 { width: 167px;}
+    .color_808000 { width: 167px;}
+    .color_00FF00 { width: 167px;}
+    .color_66CDAA { width: 167px;}
+    .color_556B2F { width: 167px;}
+    .color_008080 { width: 167px;}
+    .color_FFA07A { width: 380px;}
+    .color_FF4500 { width: 380px;}
+    .color_BC8F8F { width: 240px; }
+    .color_F4A460 { width: 240px; display: none; }
+    .color_D2691E { width: 240px; }
+    .color_8B4513 { width: 240px; }
+    .color_A52A2A { width: 240px; }
+
+    .container {
+        width: 768px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .fifth_block{
+        display: flex;
+        justify-content: center;
+    }
+    .first_row {
+        width: 66%;
+    }
+    .second_row {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 769px) {
+    /*  0 <= ширины экрана <= 768  */
+    .color_CD5C5C { width: 225px;}
+    .color_DC143C { width: 75px;}
+    .color_FFC0CB { width: 300px;}
+    .color_FF69B4 { width: 400px;}
+    .color_ADFF2F { width: 300px; height: 100%;}
+    .color_32CD32 { width: 145px;}
+    .color_00FA9A { width: 145px;}
+    .color_2E8B57 { width: 145px;}
+    .color_006400 { width: 145px;}
+    .color_9ACD32 { width: 145px;}
+    .color_808000 { width: 145px;}
+    .color_00FF00 { width: 300px;}
+    .color_66CDAA { width: 145px;}
+    .color_556B2F { width: 145px;}
+    .color_008080 { width: 145px; display: none; }
+    .color_FFA07A { width: 380px;}
+    .color_FF4500 { width: 380px;}
+    .color_BC8F8F { width: 300px; }
+    .color_F4A460 { width: 300px; display: none; }
+    .color_D2691E { width: 300px; }
+    .color_8B4513 { width: 300px; }
+    .color_A52A2A { width: 300px; }
+    .container {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 14px;
+    }
+    /* уменьшаем отстуры на маленьких экранах */
+    .container {
+        padding: 5px;
+    }
+    .box {
+        margin: 5px;
+    }
+
+    .second_block{
+        flex-direction: column;
+    }
+    .second_block__side_block{
+        display: flex;
+        flex-direction: row;
+    }
+    .third_block{
+        flex-direction: column;
+    }
+    .third_block__first_side_box{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .fifth_block{
+        display: flex;
+        flex-direction: column;
+    }
+    .first_row {
+        flex-direction: column;
+    }
+    .second_row {
+        flex-direction: column;
+    }
+}

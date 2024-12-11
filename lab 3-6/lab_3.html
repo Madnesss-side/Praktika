@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Добавление товара</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+body { font-family: sans-serif; }
+.container { max-width: 600px; margin: 20px auto; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; }
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"],
+textarea { width: 100%; padding: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+input[type="submit"] { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+.error { color: red; }
+#output { border: 1px solid #ccc; padding: 20px; margin-top: 20px; background-color: #f9f9f9; }
+#output h2 { margin-top: 0; }
+#output table { width: 100%; border-collapse: collapse; }
+#output th, #output td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+#output th { background-color: #f2f2f2; }
+
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Добавление товара</h1>
+    <form id="productForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">Название товара:</label>
+      <input type="text" id="Название товара:" name="Название товара" placeholder="Название товара" required>
+      <div id="nameError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="description">Описание:</label>
+      <textarea id="Описание" name="Описание" placeholder="Описание товара" rows="4" required></textarea>
+      <div id="descriptionError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="price">Цена:</label>
+      <input type="number" id="Цена" name="Цена" placeholder="Цена" step="0.01" min="0" required>
+      <div id="priceError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="category">Категория:</label>
+      <select id="Категория" name="Категория" required>
+        <option value="">Выберите категорию</option>
+        <option value="Электроника">Электроника</option>
+        <option value="Одежда">Одежда</option>
+        <option value="Книги">Книги</option>
+      </select>
+      <div id="categoryError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="image">Изображение:</label>
+      <input type="file" id="Изображение" name="Изображение" accept="image/*" required>
+      <div id="imageError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="stock">Количество на складе:</label>
+      <input type="number" id="stock" name="Количество на складе" placeholder="Количество" min="0" required>
+      <div id="stockError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Ваш email">
+      <div id="emailError" class="error"></div>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Добавить товар">
+    </div>
+  </form>
+  <div id="output"></div>
+</div>
+  <div id="output"></div>
+</div>
+
+<script>
+  const form = document.getElementById('productForm');
+  const outputDiv = document.getElementById('output');
+  const errorDivs = {
+  name: document.getElementById('nameError'),
+  description: document.getElementById('descriptionError'),
+  price: document.getElementById('priceError'),
+  category: document.getElementById('categoryError'),
+  image: document.getElementById('imageError'),
+  stock: document.getElementById('stockError'),
+  email: document.getElementById('emailError')
+};
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  let proverka = true;
+
+  for (const field in errorDivs) {
+      errorDivs[field].textContent = ''; 
+  }
+
+
+  if (proverka) {
+    const formData = new FormData(form);
+    const outputItems = Array.from(formData.entries()).map(([key, value]) => {
+      let displayValue = value;
+      if(key === 'Изображение'){
+          displayValue = `<img src="${URL.createObjectURL(value)}" alt="${value.name}">`;
+      }
+      const formattedKey = key.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])/g, ' $1').trim().toLowerCase();
+
+      return `<div class="output-item"><label>${formattedKey}:</label><p>${displayValue}</p></div>`;
+    }).join('');
+
+    outputDiv.innerHTML = `<h2>Данные о товаре:</h2>${outputItems}`;
+    form.reset();
+  }
+});
+</script>
+
+</body>
+</html>
+

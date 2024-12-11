@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Калькулятор</title>
+<style>
+body { font-family: sans-serif; }
+#calculator { width: 300px; margin: 50px auto; border: 1px solid #ccc; padding: 10px; }
+#display { width: 100%; height: 40px; background-color: #f0f0f0; border: 1px solid #ccc; text-align: right; padding: 5px; font-size: 20px; margin-bottom: 10px; }
+.buttons { display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 5px; }
+button { width: 100%; height: 40px; background-color: #e0e0e0; border: 1px solid #ccc; cursor: pointer; font-size: 18px; }
+button:hover { background-color: #d0d0d0; }
+.operator { background-color: #FFA500; } 
+.special { background-color: #87CEEB; } 
+</style>
+</head>
+<body>
+
+<div id="calculator">
+  <input type="text" id="display" readonly>
+  <div class="buttons">
+    <button class="special" onclick="clearDisplay()">C</button>
+    <button class="special" onclick="clearEntry()">CE</button>
+    <button class="special" onclick="backspace()">←</button>
+    <button class="operator" onclick="appendOperator('/')">/</button>
+    <button onclick="appendNumber('7')">7</button>
+    <button onclick="appendNumber('8')">8</button>
+    <button onclick="appendNumber('9')">9</button>
+    <button class="operator" onclick="appendOperator('*')">*</button>
+    <button onclick="appendNumber('4')">4</button>
+    <button onclick="appendNumber('5')">5</button>
+    <button onclick="appendNumber('6')">6</button>
+    <button class="operator" onclick="appendOperator('-')">-</button>
+    <button onclick="appendNumber('1')">1</button>
+    <button onclick="appendNumber('2')">2</button>
+    <button onclick="appendNumber('3')">3</button>
+    <button class="operator" onclick="appendOperator('+')">+</button>
+    <button onclick="appendNumber('0')">0</button>
+    <button onclick="appendNumber('.')">.</button>
+    <button onclick="calculate()">=</button>
+    <button class="special" onclick="changeSign()">±</button>
+  </div>
+    <div class="buttons">
+    <button class="special" onclick="inverse()">1/x</button>
+    <button class="special" onclick="sqrt()">√</button>
+    <button class="special" onclick="percent()">%</button>
+  </div>
+
+</div>
+
+<script>
+let display = document.getElementById('display');
+let currentInput = '';
+
+function appendNumber(num) {
+  currentInput += num;
+  display.value = currentInput;
+}
+
+function appendOperator(op) {
+  currentInput += op;
+  display.value = currentInput;
+}
+
+function calculate() {
+  try {
+    currentInput = eval(currentInput);
+    display.value = currentInput;
+  } catch (error) {
+    display.value = 'Ошибка';
+  }
+}
+
+function clearDisplay() {
+  currentInput = '';
+  display.value = '';
+}
+
+function clearEntry() {
+  currentInput = currentInput.slice(0, -1);
+  display.value = currentInput;
+}
+
+function backspace() {
+  currentInput = currentInput.slice(0, -1);
+  display.value = currentInput;
+}
+
+function changeSign() {
+  if (currentInput.startsWith('-')) {
+    currentInput = currentInput.substring(1);
+  } else {
+    currentInput = '-' + currentInput;
+  }
+  display.value = currentInput;
+}
+
+function inverse() {
+  if(currentInput === '0' || currentInput === ''){
+    display.value = 'Ошибка';
+    return;
+  }
+  currentInput = 1 / parseFloat(currentInput);
+  display.value = currentInput;
+}
+
+function sqrt() {
+  if(parseFloat(currentInput) < 0){
+    display.value = 'Ошибка';
+    return;
+  }
+  currentInput = Math.sqrt(parseFloat(currentInput));
+  display.value = currentInput;
+}
+
+function percent() {
+  currentInput = parseFloat(currentInput) / 100;
+  display.value = currentInput;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+.main-flex-container{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.eight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+}
+.zero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width:50%;
+}
+.flex {
+    background-color: gray;
+    height: 14vh;
+    width: 9vw;
+}
+.nothing{
+    opacity: 0.1;
+}
