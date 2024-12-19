@@ -63,10 +63,16 @@ function appendOperator(op) {
 
 function calculate() {
   try {
-    currentInput = eval(currentInput);
-    display.value = currentInput;
+    let result = eval(currentInput);
+    // Проверка на деление на ноль более явно
+    if (isNaN(result) || !isFinite(result)) {
+      display.value = "Ошибка: Деление на ноль";
+    } else {
+      display.value = result;
+      currentInput = result.toString(); // Обновляем currentInput для дальнейших вычислений
+    }
   } catch (error) {
-    display.value = 'Ошибка';
+    display.value = "Ошибка: Неверный ввод";
   }
 }
 
@@ -104,11 +110,12 @@ function inverse() {
 }
 
 function sqrt() {
-  if(parseFloat(currentInput) < 0){
+  let num = parseFloat(currentInput);
+  if(isNaN(num) || num < 0){
     display.value = 'Ошибка';
     return;
   }
-  currentInput = Math.sqrt(parseFloat(currentInput));
+  currentInput = Math.sqrt(num);
   display.value = currentInput;
 }
 
